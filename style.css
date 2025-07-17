@@ -1,23 +1,69 @@
 body {
-  font-family: sans-serif;
-  padding: 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+  background-color: #f4f6f9;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
 }
 
 .semestre {
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.semestre h2 {
+  font-size: 20px;
+  color: #1a252f;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
 }
 
 .materia {
+  margin: 10px 0;
   padding: 10px;
-  border: 1px solid #ccc;
-  margin: 5px 0;
+  border: 1px solid #bdc3c7;
+  border-radius: 6px;
+  background-color: #ecf0f1;
   cursor: pointer;
-  background-color: #f0f0f0;
-  transition: background 0.3s;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.materia:hover {
+  transform: scale(1.01);
+  background-color: #dfe6e9;
 }
 
 .materia.aprobada {
-  background-color: #b2f2bb;
+  background-color: #2ecc71;
+  color: white;
+  border-color: #27ae60;
+}
+
+.materia.bloqueada {
+  background-color: #bdc3c7;
+  color: #7f8c8d;
+  cursor: not-allowed;
+  border-color: #95a5a6;
+}
+
+.materia h3 {
+  margin: 0 0 5px;
+}
+
+.materia p {
+  margin: 0;
+  font-size: 0.9em;
+}
+
 }
 
 .materia.cursando {
