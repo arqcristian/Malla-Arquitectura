@@ -1,0 +1,29 @@
+body {
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.semestre {
+  margin-bottom: 20px;
+}
+
+.materia {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin: 5px 0;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  transition: background 0.3s;
+}
+
+.materia.aprobada {
+  background-color: #b2f2bb;
+}
+
+.materia.cursando {
+  background-color: #ffe066;
+}
+
+.materia.pendiente {
+  background-color: #ffa8a8;
+}
