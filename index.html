@@ -9,6 +9,8 @@
 <body>
   <h1>Malla Curricular de Licenciatura</h1>
 
+  
+
   <div class="semestre">
     <h2>Semestre 1</h2>
     <div class="materia" onclick="toggleEstado(this)">Fundamentos del Arte</div>
@@ -24,109 +26,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-// script.js
-const materias = [
-  {
-    nombre: "Diseño Básico",
-    requisitos: []
-  },
-  {
-    nombre: "Elemens. Y procs. Cons. Basicos",
-    requisitos: []
-  },
-  {
-    nombre: "Estatica",
-    requisitos: []
-  },
-  {
-    nombre: "Expresion Grafica",
-    requisitos: []
-  },
-  {
-    nombre: "Dibujo del natural I",
-    requisitos: []
-  },
-  {
-    nombre: "Teoria de conocimientos e investigación",
-    requisitos: []
-  },
-  {
-    nombre: "Critica y análisis historia arquitectura",
-    requisitos: []
-  },
-  {
-    nombre: "Teoria del diseño y procesos de investigación",
-    requisitos: ["Teoria de conocimientos e investigación"]
-  },
-  {
-    nombre: "Principios y fundamentos de la arquitectura I",
-    requisitos: []
-  },
-  {
-    nombre: "Metodos y procesos del diseño",
-    requisitos: []
-  },
-  {
-    nombre: "Expresion digital I",
-    requisitos: ["Expresion Grafica"]
-  },
-  {
-    nombre: "Dibujo del natural II",
-    requisitos: ["Dibujo del natural I"]
-  },
-  {
-    nombre: "Resistencias de materiales I",
-    requisitos: ["Estatica"]
-  },
-  {
-    nombre: "Construccion con sistemas de muros estructurales",
-    requisitos: ["Elemens. Y procs. Cons. Basicos"]
-  }
-  // Agrega aquí el resto de las materias con sus requisitos...
-];
-
-function crearMalla() {
-  const contenedor = document.getElementById("malla");
-
-  materias.forEach(materia => {
-    const div = document.createElement("div");
-    div.className = "materia bloqueada";
-    div.innerHTML = `<h3>${materia.nombre}</h3><p>Requisitos: ${materia.requisitos.join(", ") || "Ninguno"}</p>`;
-    div.onclick = () => aprobarMateria(materia.nombre);
-    div.dataset.nombre = materia.nombre;
-    contenedor.appendChild(div);
-  });
-
-  actualizarMalla();
-}
-
-function aprobarMateria(nombre) {
-  const div = document.querySelector(`.materia[data-nombre='${nombre}']`);
-  if (div.classList.contains("bloqueada")) return;
-  div.classList.add("aprobada");
-  actualizarMalla();
-}
-
-function actualizarMalla() {
-  const aprobadas = new Set(
-    Array.from(document.querySelectorAll(".materia.aprobada"))
-      .map(div => div.dataset.nombre)
-  );
-
-  document.querySelectorAll(".materia").forEach(div => {
-    const materia = materias.find(m => m.nombre === div.dataset.nombre);
-    const requisitosCumplidos = materia.requisitos.every(req => aprobadas.has(req));
-
-    if (aprobadas.has(materia.nombre)) {
-      div.classList.remove("bloqueada");
-      div.classList.add("aprobada");
-    } else if (requisitosCumplidos) {
-      div.classList.remove("bloqueada");
-    } else {
-      div.classList.add("bloqueada");
-      div.classList.remove("aprobada");
-    }
-  });
-}
-
-crearMalla();
